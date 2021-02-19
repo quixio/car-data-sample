@@ -1,8 +1,11 @@
 # Quix car data sample code
-Python example code how to write car telemetry data into Quix platform.
+Python example code how to write car telemetry data into Quix platform. Example file ([cardata.csv](source/cardata.csv)) provided is telemetry from F1 car in **Codemaster 2019 racing game**. 
 
-TODO: description
+## Get started
+Sign up for free account in Quix platform [here](https://portal.platform.quix.ai/self-sign-up). Create a workspace and then a topic inside. 
 
+
+You can deploy this code directly to Quix serveless environment or setup local Python environment. 
 
 Local Python environment setup:
  - [Windows](README_Windows.md)
