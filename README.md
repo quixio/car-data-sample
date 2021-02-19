@@ -54,6 +54,8 @@ If you send data into closed stream, it is automatically opened again.
 stream.close()
 ```
 
+More about how to use Quix SDK to write data into Quix, see our documentation: [Writting to Quix DOC](https://documentation-40c5b57b-a938-4925-93a9-25df5a64e54f.platform.quix.ai/sdk/python-how-to/#writing-to-quix)
+
 ### Full code example:
 [source/main.py](source/main.py)
 
