@@ -56,3 +56,7 @@ stream.close()
 
 ### Full code example:
 [source/main.py](source/main.py)
+
+## End result
+After car data is successfully streamed to Quix platform you can analyse it using Visualize page in Quix.
+
