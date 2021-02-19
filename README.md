@@ -1,4 +1,4 @@
-# Quix Car data sample code
+# Quix car data sample code
 Python example code how to write car telemetry data into Quix platform.
 
 TODO: description
