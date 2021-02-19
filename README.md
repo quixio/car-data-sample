@@ -53,3 +53,6 @@ If you send data into closed stream, it is automatically opened again.
 ```python
 stream.close()
 ```
+
+### Full code example:
+[source/main.py](source/main.py)
