@@ -60,3 +60,4 @@ stream.close()
 ## End result
 After car data is successfully streamed to Quix platform you can analyse it using Visualize page in Quix.
 
+[![](quix.png )](quix.png "Visualize in Quix") 
