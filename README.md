@@ -1,11 +1,12 @@
-# Quix car data sample code
-Python example code how to write car telemetry data into Quix platform. Example file ([cardata.csv](source/cardata.csv)) provided is telemetry from F1 car in **Codemaster 2019 racing game**. This data was acquired by [**Codemaster F1 2019 telemetry bridge**](https://github.com/quixai/Codemaster-F1-2019-telemetry). 
+# Stream vehicle data from a CSV - sample code
+Python code sample for writing vehicle telemetry data (time series parameters) into the Quix platform. The example file ([cardata.csv](source/cardata.csv)) is data collected from a virtual F1 car in **Codemasters 2019 racing game**. This data was acquired using our [**Codemaster F1 2019 telemetry bridge**](https://github.com/quixai/Codemaster-F1-2019-telemetry). 
 
 ## Get started
-Sign up for free account in Quix platform [here](https://portal.platform.quix.ai/self-sign-up). Create a workspace and then a topic inside. 
+Sign up for free Quix account [here](https://portal.platform.quix.ai/self-sign-up). 
 
+Create a workspace and then create a topic inside. 
 
-You can deploy this code directly to Quix serveless environment or setup local Python environment. 
+You can deploy this code directly to our serveless environment or setup local Python environment. 
 
 Local Python environment setup:
  - [Windows](README_Windows.md)
@@ -14,7 +15,7 @@ Local Python environment setup:
 
 ## Code
 
-Set up connection to broker and open connection to your topic
+Set up a connection to the broker and open a connection to your topic
 
 ```python
 # Create a client factory. Factory helps you create StreamingClient (see below) a little bit easier
@@ -25,44 +26,47 @@ client = StreamingClient('<BROKER_ADDRESS>', security)
 output_topic = client.open_output_topic('ORGANIZATION-WORKSPACE-TOPICNAME')
 ```
 
-Then we create new stream in topic:
+Then create a new stream in the topic:
 
 ```python
 stream = output_topic.create_stream()
 ```
 
-A stream is a collection of data that belong to a single session of a single source. For example single car journey.
+A stream is a collection of data that belong to a single session of a single source. For example one race car for one race.
 
-If you don't specify stream id, random guid is generated. Specify it if you want append data into the stream later.
+If you don't specify a stream id, a random GUID will be generated. Specify the a stream ID if you want to append data into the stream later.
 `stream = output_topic.create_stream("my-own-stream-id")`
 
-Give the stream human readable name. This name will appear in data catalogue.
+Give the stream a human readable name. This name will appear in the data catalogue.
 ```python
 stream.properties.name = "cardata"
 ```
 
-Read csv file into data frame.
+Read the csv file into a data frame.
 ```python
 df = pd.read_csv("cardata.csv")
 ```
 
-Write data frame to output topic.
+Write the data frame to the topic.
 ```python
 stream.parameters.write(df)
 ```
 
-Stream can be infinitely long or have start and end.
+A stream can be infinitely long or have start and end.
 If you send data into closed stream, it is automatically opened again.
 ```python
 stream.close()
 ```
 
-More about how to use Quix SDK to write data into Quix, see our documentation: [Writting to Quix DOC](https://documentation-40c5b57b-a938-4925-93a9-25df5a64e54f.platform.quix.ai/sdk/python-how-to/#writing-to-quix)
+See our documentation for more information on how to stream data to Quix using our SDK: [Writting to Quix DOC](https://documentation-40c5b57b-a938-4925-93a9-25df5a64e54f.platform.quix.ai/sdk/python-how-to/#writing-to-quix)
 
 ### Full code example:
 [source/main.py](source/main.py)
 
 ## End result
-After car data is successfully streamed to Quix platform you can analyse it using Visualize page in Quix.
+After the car data is successfully streamed to Quix you can analyse it using Visualize page in Quix.
 
 [![](quix.png )](quix.png "Visualize in Quix") 
+
+## Next steps
+You can connect a model to process this streamed data live [here], and consume the results into an application [here].
